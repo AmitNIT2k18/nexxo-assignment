@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-const Pagination = ({usersPerPage, totalPages, paginate}) => {
+const Pagination = ({totalPages, paginate}) => {
 
     const [pageNo, setPageNo] = useState(1)
 
@@ -8,8 +8,6 @@ const Pagination = ({usersPerPage, totalPages, paginate}) => {
         paginate(pageNo);
     }, [pageNo])
 
-
-    // const totalPages = Math.ceil(totalUsers / usersPerPage);
   return (
     <nav>
         <ul style={btnStyle}>

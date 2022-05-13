@@ -7,8 +7,6 @@ const UserDetails = () => {
 
   const {state: {userObj}} = location
 
-  console.log(userObj)
-
   const goBack = () => {
     navigate('/');
   }

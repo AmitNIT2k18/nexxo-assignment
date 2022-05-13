@@ -10,7 +10,6 @@ function UserList() {
   const [usersList, setUsersList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [usersPerPage, setUsersPerPage] = useState(6);
   const [totalPages, setTotalPages] = useState(null);
 
   useEffect(() => {
@@ -23,12 +22,6 @@ function UserList() {
     setLoading(false);
   }, [currentPage]);
 
-  // Current User
-  // const indexOfLastUser = currentPage * usersPerPage;
-  // const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  // const currentUsers = usersList.slice(indexOfFirstUser, indexOfLastUser)
-  
-  // Change Page
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   const navigateToUserDetail = (userObj) => {
@@ -39,7 +32,7 @@ function UserList() {
     <div>
       <h1>Users List</h1>
     <div className="UserList">
-      {usersList.length > 0 && (
+      {usersList.length > 0 && !loading ? (
         <div>
         <table>
             <tr>
@@ -60,9 +53,9 @@ function UserList() {
           ))}
         </table>
         </div>
-      )}
+      ) : <h4>Loading...</h4>}
     </div>
-    <Pagination usersPerPage={usersPerPage} totalPages={totalPages} paginate={paginate} />
+    <Pagination totalPages={totalPages} paginate={paginate} />
     </div>
   );
 }
